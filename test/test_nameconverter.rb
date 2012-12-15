@@ -7,7 +7,7 @@
 
 require 'minitest/spec'
 require 'minitest/autorun'
-load 'deblank'
+load 'deblank'  unless defined?(Deblank)
 
 
 describe Deblank::NameConverter do
