@@ -43,7 +43,7 @@ You can either
 
 - put `deblank` manually into your search path,
 
-- put `deblank` anywhere and invoke it using it's full path.
+- put `deblank` anywhere and invoke it using its full path.
 
 Requirements
 ------------
