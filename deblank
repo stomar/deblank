@@ -100,7 +100,9 @@ module Deblank
       # only file[s] should be left (at least 1 argument)
       raise(ArgumentError, 'wrong number of arguments')  if argv.size < 1
 
-      options[:files]  = Array.new(argv)
+      options[:files] = Array.new(argv).map do |filename|
+        filename.encode('UTF-8')
+      end
       argv.clear
 
       options
