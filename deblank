@@ -1,5 +1,5 @@
 #!/usr/bin/ruby -w
-# encoding: utf-8
+# encoding: UTF-8
 # == Name
 #
 # deblank - remove special characters from filenames
