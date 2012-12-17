@@ -101,11 +101,25 @@ module Deblank
       raise(ArgumentError, 'wrong number of arguments')  if argv.size < 1
 
       options[:files] = Array.new(argv).map do |filename|
-        filename.encode('UTF-8')
+        correct_encoding(filename).encode('UTF-8')
       end
       argv.clear
 
       options
+    end
+
+    # Corrects the encoding for (seemingly) CP850 encoded strings
+    # from `CP850' to `Windows-1252'.
+    #
+    # Returns a copy of +string+ with corrected encoding or +string+.
+    #
+    # [On the Windows test machine (which uses code page 850 for the
+    # command prompt) the command line arguments are interpreted by Ruby
+    # as CP850 encoded strings but actually are Windows-1252 encoded.]
+    def self.correct_encoding(string)
+      return string  unless string.encoding == Encoding::CP850
+
+      string.dup.force_encoding('Windows-1252')
     end
   end
 
