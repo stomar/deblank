@@ -52,8 +52,8 @@ Requirements
 
 - No additional Ruby gems are needed to run `deblank`.
 
-- `deblank` has been tested with Ruby 1.8.7 and Ruby 1.9.3
-  on a Linux machine.
+- `deblank` has been tested with Ruby 1.9.3 on a Linux machine
+  and on Windows (command prompt with code page 850).
 
 Documentation
 -------------
@@ -62,6 +62,13 @@ Use `deblank --help` to display a brief help message.
 
 If you installed `deblank` using `rake install` you can read
 its man page with `man deblank`.
+
+Known problems
+--------------
+
+With the Windows command prompt, depending on the used character
+code page there might occur problems due to misinterpreted encoding
+of command line arguments.
 
 Reporting bugs
 --------------
