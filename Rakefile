@@ -4,7 +4,7 @@
 
 require 'rake/testtask'
 
-load 'deblank'
+require './deblank'
 
 PROGNAME = Deblank::PROGNAME
 HOMEPAGE = Deblank::HOMEPAGE
@@ -15,7 +15,8 @@ MANDIR = '/usr/local/man/man1'
 HELP2MAN = 'help2man'
 SED = 'sed'
 
-BINARY = 'deblank'
+BINARY = 'deblank.rb'
+BINARYNAME = 'deblank'  # install using this name
 MANPAGE = 'deblank.1'
 H2MFILE = 'deblank.h2m'
 
@@ -39,7 +40,7 @@ end
 desc 'Install binary and man page'
 task :install => [BINARY, MANPAGE] do
   mkdir_p BINDIR
-  install(BINARY, "#{BINDIR}/#{BINARY}")
+  install(BINARY, "#{BINDIR}/#{BINARYNAME}")
   mkdir_p MANDIR
   install(MANPAGE, MANDIR, :mode => 0644)
 end
@@ -47,7 +48,7 @@ end
 
 desc 'Uninstall binary and man page'
 task :uninstall do
-  rm "#{BINDIR}/#{BINARY}"
+  rm "#{BINDIR}/#{BINARYNAME}"
   manfile = File.basename(MANPAGE)
   rm "#{MANDIR}/#{manfile}"
 end

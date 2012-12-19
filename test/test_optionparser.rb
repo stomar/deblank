@@ -7,7 +7,7 @@
 
 require 'minitest/spec'
 require 'minitest/autorun'
-load 'deblank'  unless defined?(Deblank)
+require 'deblank'
 
 
 describe Deblank::Optionparser do
