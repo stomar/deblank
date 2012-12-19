@@ -28,6 +28,7 @@ module Deblank
   VERSION   = '0.0.1'
   DATE      = '2012-12-01'
   HOMEPAGE  = 'https://github.com/stomar/deblank'
+  TAGLINE   = 'remove special characters from filenames'
 
   COPYRIGHT = "Copyright (C) 2012 Marcus Stollsteimer.\n" +
               "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" +
