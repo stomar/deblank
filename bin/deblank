@@ -1,0 +1,5 @@
+#!/usr/bin/ruby -w
+
+require 'deblank'
+
+Deblank::Application.new.run!
