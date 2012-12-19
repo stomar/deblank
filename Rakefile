@@ -22,9 +22,9 @@ MANPAGE = 'man/deblank.1'
 H2MFILE = 'deblank.h2m'
 
 
-#def gemspec_file
-#  'deblank.gemspec'
-#end
+def gemspec_file
+  'deblank.gemspec'
+end
 
 
 task :default => [:test]
@@ -67,7 +67,7 @@ file MANPAGE => [BINARY, H2MFILE] do
 end
 
 
-#desc 'Build gem'
-#task :build => [MANPAGE] do
-#  sh "gem build #{gemspec_file}"
-#end
+desc 'Build gem'
+task :build => [MANPAGE] do
+  sh "gem build #{gemspec_file}"
+end
