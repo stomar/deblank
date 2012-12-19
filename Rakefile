@@ -4,7 +4,7 @@
 
 require 'rake/testtask'
 
-require './deblank'
+require './lib/deblank'
 
 PROGNAME = Deblank::PROGNAME
 HOMEPAGE = Deblank::HOMEPAGE
@@ -15,7 +15,7 @@ MANDIR = '/usr/local/man/man1'
 HELP2MAN = 'help2man'
 SED = 'sed'
 
-BINARY = 'deblank.rb'
+BINARY = 'lib/deblank.rb'
 BINARYNAME = 'deblank'  # install using this name
 MANPAGE = 'deblank.1'
 H2MFILE = 'deblank.h2m'

@@ -41,9 +41,9 @@ You can either
   use `[sudo] rake install` to install `deblank`
   and its man page to `/usr/local`,
 
-- copy `deblank.rb` under the name `deblank` into your search path,
+- copy `lib/deblank.rb` under the name `deblank` into your search path,
 
-- put `deblank.rb` anywhere and invoke it using its full path.
+- put `lib/deblank.rb` anywhere and invoke it using its full path.
 
 Requirements
 ------------
