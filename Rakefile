@@ -17,7 +17,7 @@ SED = 'sed'
 
 BINARY = 'lib/deblank.rb'
 BINARYNAME = 'deblank'  # install using this name
-MANPAGE = 'deblank.1'
+MANPAGE = 'man/deblank.1'
 H2MFILE = 'deblank.h2m'
 
 
