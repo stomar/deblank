@@ -26,7 +26,7 @@ module Deblank
 
   PROGNAME  = 'deblank'
   VERSION   = '0.0.1'
-  DATE      = '2012-12-01'
+  DATE      = '2012-12-20'
   HOMEPAGE  = 'https://github.com/stomar/deblank'
   TAGLINE   = 'remove special characters from filenames'
 

@@ -37,13 +37,12 @@ Installation
 
 You can either
 
-- clone or download the `deblank` repository and
-  use `[sudo] rake install` to install `deblank`
-  and its man page to `/usr/local`,
+- use `gem install deblank`,
 
 - copy `lib/deblank.rb` under the name `deblank` into your search path,
 
-- put `lib/deblank.rb` anywhere and invoke it using its full path.
+- clone or download the repository and use `[sudo] rake install`
+  on a Linux machine to install `deblank` and its man page to `/usr/local`.
 
 Requirements
 ------------
