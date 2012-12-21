@@ -1,4 +1,3 @@
-#!/usr/bin/ruby -w
 # encoding: UTF-8
 #
 # test_nameconverter.rb: Unit tests for the deblank script.
