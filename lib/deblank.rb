@@ -124,9 +124,9 @@ module Deblank
     end
   end
 
-  # This module provides a converter method for filenames
+  # This class provides a converter method for filenames
   # (only the base name is modified).
-  module NameConverter
+  class NameConverter
 
     VALID_CHARS = 'A-Z a-z 0-9 . _ -'  # spaces are ignored, `-' must be last
 
@@ -141,10 +141,15 @@ module Deblank
       'ß' => 'ss'
     }
 
-    def self.convert(filename)
+    def initialize
+      @valid_characters = VALID_CHARS
+      @substitutions = SUBSTITUTIONS
+    end
+
+    def convert(filename)
       dir, basename = File.dirname(filename), File.basename(filename)
 
-      SUBSTITUTIONS.each do |from, to|
+      @substitutions.each do |from, to|
         basename.gsub!(/#{from}/, to)
       end
       basename.gsub!(invalid_characters, '')
@@ -163,7 +168,7 @@ module Deblank
 
     private
 
-    def self.invalid_characters
+    def invalid_characters
       /[^#{@valid_characters.delete(' ')}]/
     end
   end
@@ -178,11 +183,12 @@ module Deblank
     def initialize
       begin
         options = Optionparser.parse!(ARGV)
-        @files = options[:files]
-        @simulate = options[:simulate]
       rescue => e
         usage_fail(e.message)
       end
+      @files = options[:files]
+      @simulate = options[:simulate]
+      @converter = NameConverter.new
     end
 
     # The main program.
@@ -196,7 +202,7 @@ module Deblank
           next
         end
 
-        new_filename = NameConverter.convert(filename)
+        new_filename = @converter.convert(filename)
 
         # filenames are identical
         if new_filename == filename

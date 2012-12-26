@@ -12,7 +12,7 @@ require 'deblank'
 describe Deblank::NameConverter do
 
   before do
-    @nc = Deblank::NameConverter
+    @nc = Deblank::NameConverter.new
   end
 
   it 'does not change the path name' do
@@ -32,6 +32,6 @@ describe Deblank::NameConverter do
   end
 
   it 'can return the default substitutions as string' do
-    @nc.default_substitutions_to_string.split("\n")[0].must_equal '  => _'
+    Deblank::NameConverter.default_substitutions_to_string.split("\n")[0].must_equal '  => _'
   end
 end
