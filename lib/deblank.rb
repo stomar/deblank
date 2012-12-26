@@ -158,12 +158,7 @@ module Deblank
     end
 
     def self.default_substitutions_to_string
-      output = ''
-      SUBSTITUTIONS.each do |from, to|
-        output << "#{from} => #{to}\n"
-      end
-
-      output
+      SUBSTITUTIONS.map {|from, to| "#{from} => #{to}\n" }.join
     end
 
     private
