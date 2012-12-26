@@ -142,14 +142,13 @@ module Deblank
     }
 
     def self.convert(filename)
-      invalid_chars = /[^#{VALID_CHARS.tr(' ', '')}]/
       basename = File.basename(filename)
       dir = File.dirname(filename)
 
       SUBSTITUTIONS.each do |from, to|
         basename.gsub!(/#{from}/, to)
       end
-      basename.gsub!(invalid_chars, '')
+      basename.gsub!(invalid_characters, '')
 
       dir == '.' ? basename : "#{dir}/#{basename}"
     end
@@ -161,6 +160,12 @@ module Deblank
       end
 
       output
+    end
+
+    private
+
+    def self.invalid_characters
+      /[^#{@valid_characters.delete(' ')}]/
     end
   end
 
