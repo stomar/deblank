@@ -30,4 +30,8 @@ describe Deblank::NameConverter do
   it 'transliterates umlauts and eszett' do
     @nc.convert('Ä_Ö_Ü_ä_ö_ü_ß.txt').must_equal 'Ae_Oe_Ue_ae_oe_ue_ss.txt'
   end
+
+  it 'can return the default substitutions as string' do
+    @nc.substitutions_to_string.split("\n")[0].must_equal '  => _'
+  end
 end
