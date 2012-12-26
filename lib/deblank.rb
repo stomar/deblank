@@ -142,8 +142,7 @@ module Deblank
     }
 
     def self.convert(filename)
-      basename = File.basename(filename)
-      dir = File.dirname(filename)
+      dir, basename = File.dirname(filename), File.basename(filename)
 
       SUBSTITUTIONS.each do |from, to|
         basename.gsub!(/#{from}/, to)
