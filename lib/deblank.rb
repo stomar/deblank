@@ -149,9 +149,7 @@ module Deblank
     def convert(filename)
       dir, basename = File.dirname(filename), File.basename(filename)
 
-      @substitutions.each do |from, to|
-        basename.gsub!(/#{from}/, to)
-      end
+      @substitutions.each {|from, to| basename.gsub!(/#{from}/, to) }
       basename.gsub!(invalid_characters, '')
 
       dir == '.' ? basename : "#{dir}/#{basename}"
