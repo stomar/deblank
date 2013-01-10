@@ -31,6 +31,10 @@ describe Deblank::NameConverter do
     @nc.convert('Ä_Ö_Ü_ä_ö_ü_ß.txt').must_equal 'Ae_Oe_Ue_ae_oe_ue_ss.txt'
   end
 
+  it 'can return the default valid characters as string' do
+    Deblank::NameConverter.default_valid_chars_to_s.must_equal 'A-Z a-z 0-9 . _ -'
+  end
+
   it 'can return the default substitutions as string' do
     Deblank::NameConverter.default_substitutions_to_s.split("\n")[0].must_equal '  => _'
   end

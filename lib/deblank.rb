@@ -60,7 +60,7 @@ module Deblank
         opt.separator 'like spaces, parentheses, or umlauts.'
         opt.separator 'The new filename will only contain the following characters:'
         opt.separator ''
-        opt.separator '    ' << NameConverter::VALID_CHARS
+        opt.separator '    ' << NameConverter.default_valid_chars_to_s
         opt.separator ''
         opt.separator 'Spaces are replaced by underscores, German umlauts and eszett are'
         opt.separator 'transliterated, all other invalid characters are removed.'
@@ -128,7 +128,7 @@ module Deblank
   # (only the base name is modified).
   class NameConverter
 
-    VALID_CHARS = 'A-Z a-z 0-9 . _ -'  # spaces are ignored, `-' must be last
+    VALID_CHARS = 'A-Za-z0-9._-'  # `-' must be last
 
     SUBSTITUTIONS = {
       ' ' => '_',
@@ -155,6 +155,10 @@ module Deblank
       dir == '.' ? basename : "#{dir}/#{basename}"
     end
 
+    def self.default_valid_chars_to_s
+      VALID_CHARS.scan(/.-.|./).join(' ')
+    end
+
     def self.default_substitutions_to_s
       SUBSTITUTIONS.map {|from, to| "#{from} => #{to}\n" }.join
     end
@@ -162,7 +166,7 @@ module Deblank
     private
 
     def invalid_characters
-      /[^#{@valid_characters.delete(' ')}]/
+      /[^#{@valid_characters}]/
     end
   end
 
