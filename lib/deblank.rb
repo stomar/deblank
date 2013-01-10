@@ -85,7 +85,7 @@ module Deblank
 
         opt.on('-l', '--list',
                'List the used character substitutions.') do
-          puts NameConverter.default_substitutions_to_string
+          puts NameConverter.default_substitutions_to_s
           exit
         end
 
@@ -155,7 +155,7 @@ module Deblank
       dir == '.' ? basename : "#{dir}/#{basename}"
     end
 
-    def self.default_substitutions_to_string
+    def self.default_substitutions_to_s
       SUBSTITUTIONS.map {|from, to| "#{from} => #{to}\n" }.join
     end
 

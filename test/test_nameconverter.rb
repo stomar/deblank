@@ -32,6 +32,6 @@ describe Deblank::NameConverter do
   end
 
   it 'can return the default substitutions as string' do
-    Deblank::NameConverter.default_substitutions_to_string.split("\n")[0].must_equal '  => _'
+    Deblank::NameConverter.default_substitutions_to_s.split("\n")[0].must_equal '  => _'
   end
 end
