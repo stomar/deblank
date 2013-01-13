@@ -218,12 +218,14 @@ module Deblank
       end   # of each
     end
 
+    private
+
     # Asks for yes or no (y/n).
     #
     # +question+ - string to be printed
     #
     # Returns +true+ if the answer is yes.
-    def ask(question) # :nodoc:
+    def ask(question)
       loop do
         $stderr.print "#{question} [y/n] "
         reply = $stdin.gets.chomp.downcase  # $stdin: avoids gets / ARGV problem
@@ -234,7 +236,7 @@ module Deblank
     end
 
     # Prints an error message and a short help information, then exits.
-    def usage_fail(message) # :nodoc:
+    def usage_fail(message)
       warn "#{PROGNAME}: #{message}"
       warn "Use `#{PROGNAME} --help' for valid options."
       exit ERRORCODE[:usage]
