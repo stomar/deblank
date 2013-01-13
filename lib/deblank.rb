@@ -201,7 +201,6 @@ module Deblank
 
         new_filename = @converter.convert(filename)
 
-        # filenames are identical
         if new_filename == filename
           warn("`#{filename}' and `#{new_filename}' are the same file. (Skipped.)")
           next
