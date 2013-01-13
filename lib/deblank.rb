@@ -206,18 +206,22 @@ module Deblank
           next
         end
 
-        # move file
-        if File.exist?(new_filename)
-          overwrite_ok = ask("File `#{new_filename}' already exists. Overwrite?")
-          next  unless overwrite_ok
-        end
-
-        warn "Moving from `#{filename}' to `#{new_filename}'."
-        File.rename(filename, new_filename)  unless @simulate
+        secure_rename(filename, new_filename)
       end   # of each
     end
 
     private
+
+    def secure_rename(old_filename, new_filename)
+      return  if File.exist?(new_filename) && !overwrite?(new_filename)
+
+      warn "Moving from `#{old_filename}' to `#{new_filename}'."
+      File.rename(old_filename, new_filename)  unless @simulate
+    end
+
+    def overwrite?(filename)
+      ask("File `#{filename}' already exists. Overwrite?")
+    end
 
     # Asks for yes or no (y/n).
     #
