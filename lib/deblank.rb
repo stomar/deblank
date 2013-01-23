@@ -50,7 +50,7 @@ module Deblank
 
       options = {
         :files  => nil,
-        :simulate => false,
+        :simulate => false
       }
 
       opt_parser = OptionParser.new do |opt|
