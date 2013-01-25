@@ -220,7 +220,7 @@ module Deblank
     end
 
     def overwrite?(filename)
-      ask("File `#{filename}' already exists. Overwrite?")
+      confirm("File `#{filename}' already exists. Overwrite?")
     end
 
     # Asks for yes or no (y/n).
@@ -228,12 +228,11 @@ module Deblank
     # +question+ - string to be printed
     #
     # Returns +true+ if the answer is yes.
-    def ask(question)
+    def confirm(question)
       loop do
         $stderr.print "#{question} [y/n] "
-        reply = $stdin.gets.chomp.downcase  # $stdin: avoids gets / ARGV problem
-        return true   if reply == 'y'
-        return false  if reply == 'n'
+        reply = $stdin.gets.chomp.downcase  # $stdin avoids gets/ARGV problem
+        return reply == 'y'  if /\A[yn]\Z/ =~ reply
         warn "Please answer `y' or `n'."
       end
     end
