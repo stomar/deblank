@@ -244,11 +244,10 @@ module Deblank
       exit ERRORCODE[:usage]
     end
   end
+end  # module
 
 ### call main method only if called on command line
 
 if __FILE__ == $0
-  Application.new.run!
+  Deblank::Application.new.run!
 end
-
-end  # module
