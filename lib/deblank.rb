@@ -155,6 +155,10 @@ module Deblank
       dir == '.' ? basename : "#{dir}/#{basename}"
     end
 
+    def invalid?(filename)
+      invalid_characters === filename
+    end
+
     def self.default_valid_chars_to_s
       VALID_CHARS.scan(/.-.|./).join(' ')
     end
@@ -199,13 +203,12 @@ module Deblank
           next
         end
 
-        new_filename = @converter.convert(filename)
-
-        if new_filename == filename
+        unless @converter.invalid?(filename)
           warn("`#{filename}' already is a valid filename. (Skipped.)")
           next
         end
 
+        new_filename = @converter.convert(filename)
         secure_rename(filename, new_filename)
       end   # of each
     end

@@ -15,6 +15,12 @@ describe Deblank::NameConverter do
     @nc = Deblank::NameConverter.new
   end
 
+  it 'recognizes invalid filenames' do
+    @nc.invalid?('path/to/filename with spaces.txt').must_equal true
+    @nc.invalid?('filename_with_ä.txt').must_equal true
+    @nc.invalid?('Valid_filename-1.txt').must_equal false
+  end
+
   it 'does not change the path name' do
     @nc.convert('path with spaces/file.txt').must_equal 'path with spaces/file.txt'
   end
