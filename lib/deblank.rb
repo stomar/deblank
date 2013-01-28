@@ -198,22 +198,27 @@ module Deblank
       warn "#{message}\n#{'-' * message.size}\n"  if @simulate
 
       @files.each do |filename|
-        unless File.exist?(filename)
-          warn "There is no file `#{filename}'. (Skipped.)"
-          next
-        end
-
-        unless @converter.invalid?(filename)
-          warn("`#{filename}' already is a valid filename. (Skipped.)")
-          next
-        end
+        next  unless file_exist?(filename)
+        next  unless invalid?(filename)
 
         new_filename = @converter.convert(filename)
         secure_rename(filename, new_filename)
-      end   # of each
+      end
     end
 
     private
+
+    def file_exist?(filename)
+      fail_message = "There is no file `#{filename}'. (Skipped.)"
+
+      File.exist?(filename)  or warn fail_message
+    end
+
+    def invalid?(filename)
+      fail_message = "`#{filename}' already is a valid filename. (Skipped.)"
+
+      @converter.invalid?(filename)  or warn fail_message
+    end
 
     def secure_rename(old_filename, new_filename)
       return  if File.exist?(new_filename) && !overwrite?(new_filename)
