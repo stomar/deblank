@@ -208,16 +208,20 @@ module Deblank
 
     private
 
-    def file_exist?(filename)
-      fail_message = "There is no file `#{filename}'. (Skipped.)"
+    def skip_warn(message)
+      warn "#{message} (Skipped.)"
+    end
 
-      File.exist?(filename)  or warn fail_message
+    def file_exist?(filename)
+      fail_message = "There is no file `#{filename}'."
+
+      File.exist?(filename)  or skip_warn(fail_message)
     end
 
     def invalid?(filename)
-      fail_message = "`#{filename}' already is a valid filename. (Skipped.)"
+      fail_message = "`#{filename}' already is a valid filename."
 
-      @converter.invalid?(filename)  or warn fail_message
+      @converter.invalid?(filename)  or skip_warn(fail_message)
     end
 
     def secure_rename(old_filename, new_filename)
