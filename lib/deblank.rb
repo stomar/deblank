@@ -30,10 +30,12 @@ module Deblank
   HOMEPAGE  = 'https://github.com/stomar/deblank'
   TAGLINE   = 'remove special characters from filenames'
 
-  COPYRIGHT = "Copyright (C) 2012-2013 Marcus Stollsteimer.\n" +
-              "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" +
-              "This is free software: you are free to change and redistribute it.\n" +
-              "There is NO WARRANTY, to the extent permitted by law."
+  COPYRIGHT = <<-copyright.gsub(/^ +/, '')
+    Copyright (C) 2012-2013 Marcus Stollsteimer.
+    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.
+  copyright
 
   # Parser for the command line options.
   # The class method parse! does the job.
@@ -55,18 +57,18 @@ module Deblank
 
       opt_parser = OptionParser.new do |opt|
         opt.banner = "Usage: #{PROGNAME} [options] file[s]"
-        opt.separator ''
-        opt.separator 'deblank renames files and replaces or removes special characters'
-        opt.separator 'like spaces, parentheses, or umlauts.'
-        opt.separator 'The new filename will only contain the following characters:'
-        opt.separator ''
-        opt.separator '    ' << NameConverter.default_valid_chars_to_s
-        opt.separator ''
-        opt.separator 'Spaces are replaced by underscores, German umlauts and eszett are'
-        opt.separator 'transliterated, all other invalid characters are removed.'
-        opt.separator ''
-        opt.separator 'Options'
-        opt.separator ''
+        opt.separator %Q{
+          deblank renames files and replaces or removes special characters
+          like spaces, parentheses, or umlauts.
+          The new filename will only contain the following characters:
+
+          ____#{NameConverter.default_valid_chars_to_s}
+
+          Spaces are replaced by underscores, German umlauts and eszett are
+          transliterated, all other invalid characters are removed.
+
+          Options
+        }.gsub(/^ +/, '').gsub(/^____/, '    ')
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
