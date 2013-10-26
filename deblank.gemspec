@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.name              = 'deblank'
   s.version           = version
   s.date              = date
-  s.rubyforge_project = 'deblank'
 
   s.description = 'deblank is a command line tool that ' +
                   'renames files and replaces or removes special characters ' +
@@ -22,14 +21,14 @@ Gem::Specification.new do |s|
 
   s.license = 'GPL-3'
 
-  # s.requirements = ''
+  s.add_development_dependency('rake')
 
   s.executables = ['deblank']
   s.bindir = 'bin'
-  s.require_path = 'lib'
-  s.test_files = Dir.glob('test/**/test_*.rb')
 
-  s.rdoc_options = ['--charset=UTF-8']
+  s.require_path = 'lib'
+
+  s.test_files = Dir.glob('test/**/test_*.rb')
 
   s.files = %w{
       README.md
@@ -39,5 +38,5 @@ Gem::Specification.new do |s|
     } +
     Dir.glob('{bin,lib,man,test}/**/*')
 
-  s.add_development_dependency('rake')
+  s.rdoc_options = ['--charset=UTF-8']
 end
