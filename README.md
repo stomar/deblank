@@ -37,7 +37,7 @@ Installation
 
 You can either
 
-- use `gem install deblank`,
+- use `gem install deblank` to install from RubyGems.org,
 
 - copy `lib/deblank.rb` under the name `deblank` into your search path,
 
@@ -51,8 +51,8 @@ Requirements
 
 - No additional Ruby gems are needed to run `deblank`.
 
-- `deblank` has been tested with Ruby 1.9.3 on a Linux machine
-  and on Windows (command prompt with code page 850).
+- `deblank` has been tested with Ruby 1.9.3 and Ruby 2.0.0
+  on Linux and on Windows (command prompt with code page 850).
 
 Documentation
 -------------
