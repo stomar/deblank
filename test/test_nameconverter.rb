@@ -2,7 +2,7 @@
 #
 # test_nameconverter.rb: Unit tests for the deblank script.
 #
-# Copyright (C) 2012-2013 Marcus Stollsteimer
+# Copyright (C) 2012-2014 Marcus Stollsteimer
 
 require 'minitest/spec'
 require 'minitest/autorun'
