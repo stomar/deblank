@@ -67,7 +67,7 @@ module Deblank
           Spaces are replaced by underscores, German umlauts and eszett are
           transliterated, all other invalid characters are removed.
 
-          Options
+          Options:
         }.gsub(/^ +/, '').gsub(/^____/, '    ')
 
         # process --version and --help first,
