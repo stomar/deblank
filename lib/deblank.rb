@@ -15,7 +15,7 @@
 #
 # == Author
 #
-# Copyright (C) 2012-2017 Marcus Stollsteimer
+# Copyright (C) 2012-2018 Marcus Stollsteimer
 #
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 
@@ -31,7 +31,7 @@ module Deblank
   TAGLINE   = 'remove special characters from filenames'
 
   COPYRIGHT = <<-copyright.gsub(/^ +/, '')
-    Copyright (C) 2012-2017 Marcus Stollsteimer.
+    Copyright (C) 2012-2018 Marcus Stollsteimer.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
     This is free software: you are free to change and redistribute it.
     There is NO WARRANTY, to the extent permitted by law.
