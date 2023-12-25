@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# encoding: UTF-8
+#
 # == Name
 #
 # deblank - remove special characters from filenames
