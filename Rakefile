@@ -1,7 +1,3 @@
-# rakefile for the deblank script.
-#
-# Copyright (C) 2012-2018 Marcus Stollsteimer
-
 require 'rake/testtask'
 
 require './lib/deblank'

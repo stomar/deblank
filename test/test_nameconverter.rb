@@ -1,8 +1,4 @@
 # encoding: UTF-8
-#
-# test_nameconverter.rb: Unit tests for the deblank script.
-#
-# Copyright (C) 2012-2018 Marcus Stollsteimer
 
 require 'minitest/autorun'
 require 'deblank'
