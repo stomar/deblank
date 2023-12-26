@@ -23,7 +23,7 @@ def gemspec_file
 end
 
 
-task :default => [:test]
+task default: [:test]
 
 Rake::TestTask.new do |t|
   t.pattern = "test/**/test_*.rb"
@@ -33,11 +33,11 @@ end
 
 
 desc "Install binary and man page"
-task :install => [BINARY, MANPAGE] do
+task install: [BINARY, MANPAGE] do
   mkdir_p BINDIR
   install(BINARY, "#{BINDIR}/#{BINARYNAME}")
   mkdir_p MANDIR
-  install(MANPAGE, MANDIR, :mode => 0644)
+  install(MANPAGE, MANDIR, mode: 0644)
 end
 
 
@@ -50,7 +50,7 @@ end
 
 
 desc "Create man page"
-task :man => [MANPAGE]
+task man: [MANPAGE]
 
 file MANPAGE => [BINARY, H2MFILE] do
   sh "#{HELP2MAN} --no-info --name='#{TAGLINE}' --include=#{H2MFILE} -o #{MANPAGE} ./#{BINARY}"
@@ -61,6 +61,6 @@ end
 
 
 desc "Build gem"
-task :build => [MANPAGE] do
+task build: [MANPAGE] do
   sh "gem build #{gemspec_file}"
 end

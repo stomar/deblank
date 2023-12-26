@@ -51,8 +51,8 @@ module Deblank
     def self.parse!(argv)
 
       options = {
-        :files  => nil,
-        :simulate => false
+        files: nil,
+        simulate: false
       }
 
       opt_parser = OptionParser.new do |opt|
@@ -181,7 +181,7 @@ module Deblank
   # It parses the command line arguments and renames the files.
   class Application
 
-    ERRORCODE = {:general => 1, :usage => 2}
+    ERRORCODE = {general: 1, usage: 2}
 
     def initialize
       begin
