@@ -141,7 +141,7 @@ module Deblank
       "Ö" => "Oe",
       "Ü" => "Ue",
       "ß" => "ss"
-    }
+    }.freeze
 
     def initialize
       @valid_characters = VALID_CHARS
@@ -181,7 +181,7 @@ module Deblank
   # It parses the command line arguments and renames the files.
   class Application
 
-    ERRORCODE = { general: 1, usage: 2 }
+    ERRORCODE = { general: 1, usage: 2 }.freeze
 
     def initialize
       begin
