@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "minitest/autorun"
 require "deblank"
 
@@ -7,8 +9,8 @@ describe Deblank::Optionparser do
   before do
     @parser = Deblank::Optionparser
     @arg = "test_ä.txt"
-    @arg_Win_1252_labeled_as_CP850 = "test_\xE4.txt".force_encoding("CP850")
-    @arg_Win_1252 = "test_\xE4.txt".force_encoding("Windows-1252")
+    @arg_Win_1252_labeled_as_CP850 = (+"test_\xE4.txt").force_encoding("CP850")
+    @arg_Win_1252 = (+"test_\xE4.txt").force_encoding("Windows-1252")
   end
 
   it "can correct encoding from (seemingly) CP850 to Windows-1252" do
