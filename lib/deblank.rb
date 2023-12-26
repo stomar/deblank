@@ -49,7 +49,6 @@ module Deblank
     #
     # Returns a hash containing the option parameters.
     def self.parse!(argv)
-
       options = {
         files: nil,
         simulate: false
@@ -181,7 +180,7 @@ module Deblank
   # It parses the command line arguments and renames the files.
   class Application
 
-    ERRORCODE = {general: 1, usage: 2}
+    ERRORCODE = { general: 1, usage: 2 }
 
     def initialize
       begin
@@ -217,13 +216,13 @@ module Deblank
     def file_exist?(filename)
       fail_message = "There is no file `#{filename}'."
 
-      File.exist?(filename)  or skip_warn(fail_message)
+      File.exist?(filename) or skip_warn(fail_message)
     end
 
     def invalid?(filename)
       fail_message = "`#{filename}' already is a valid filename."
 
-      @converter.invalid?(filename)  or skip_warn(fail_message)
+      @converter.invalid?(filename) or skip_warn(fail_message)
     end
 
     def secure_rename(old_filename, new_filename)
@@ -247,6 +246,7 @@ module Deblank
         $stderr.print "#{question} [y/n] "
         reply = $stdin.gets.chomp.downcase  # $stdin avoids gets/ARGV problem
         return reply == "y"  if /\A[yn]\Z/ =~ reply
+
         warn "Please answer `y' or `n'."
       end
     end

@@ -30,7 +30,8 @@ Gem::Specification.new do |s|
 
   s.test_files = Dir.glob("test/**/test_*.rb")
 
-  s.files = %w{
+  s.files =
+    %w{
       README.md
       Rakefile
       Gemfile
