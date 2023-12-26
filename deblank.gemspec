@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">=1.9.2"
 
-  s.add_development_dependency("rake")
-
   s.executables = ["deblank"]
   s.bindir = "bin"
 
@@ -35,6 +33,7 @@ Gem::Specification.new do |s|
   s.files = %w{
       README.md
       Rakefile
+      Gemfile
       deblank.gemspec
       deblank.h2m
     } +
