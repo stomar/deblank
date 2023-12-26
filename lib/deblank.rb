@@ -57,7 +57,7 @@ module Deblank
 
       opt_parser = OptionParser.new do |opt|
         opt.banner = "Usage: #{PROGNAME} [options] file[s]"
-        opt.separator %Q{
+        opt.separator "
           deblank renames files and replaces or removes special characters
           like spaces, parentheses, or umlauts.
           The new filename will only contain the following characters:
@@ -68,7 +68,7 @@ module Deblank
           transliterated, all other invalid characters are removed.
 
           Options:
-        }.gsub(/^ +/, "").gsub(/^____/, "    ")
+        ".gsub(/^ +/, "").gsub(/^____/, "    ")
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
@@ -101,7 +101,7 @@ module Deblank
       opt_parser.parse!(argv)
 
       # only file[s] should be left (at least 1 argument)
-      raise(ArgumentError, "wrong number of arguments")  if argv.size < 1
+      raise(ArgumentError, "wrong number of arguments")  if argv.empty?
 
       options[:files] = Array.new(argv).map do |filename|
         correct_encoding(filename).encode("UTF-8")
@@ -259,10 +259,10 @@ module Deblank
       exit ERRORCODE[:usage]
     end
   end
-end  # module
+end
 
 ### call main method only if called on command line
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
   Deblank::Application.new.run!
 end

@@ -39,7 +39,7 @@ task install: [BINARY, MANPAGE] do
   mkdir_p BINDIR
   install(BINARY, "#{BINDIR}/#{BINARYNAME}")
   mkdir_p MANDIR
-  install(MANPAGE, MANDIR, mode: 0644)
+  install(MANPAGE, MANDIR, mode: 0o644)
 end
 
 

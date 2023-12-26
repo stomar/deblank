@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.version           = version
   s.date              = date
 
-  s.description = "deblank is a command line tool that " +
-                  "renames files and replaces or removes special characters " +
+  s.description = "deblank is a command line tool that " \
+                  "renames files and replaces or removes special characters " \
                   "like spaces, parentheses, or umlauts."
   s.summary = "deblank - #{tagline}"
 
@@ -33,13 +33,13 @@ Gem::Specification.new do |s|
   s.test_files = Dir.glob("test/**/test_*.rb")
 
   s.files =
-    %w{
+    %w[
       README.md
       Rakefile
       Gemfile
       deblank.gemspec
       deblank.h2m
-    } +
+    ] +
     Dir.glob("{bin,lib,man,test}/**/*")
 
   s.rdoc_options = ["--charset=UTF-8"]
