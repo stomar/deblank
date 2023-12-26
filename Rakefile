@@ -1,38 +1,38 @@
-require 'rake/testtask'
+require "rake/testtask"
 
-require './lib/deblank'
+require "./lib/deblank"
 
 PROGNAME = Deblank::PROGNAME
 HOMEPAGE = Deblank::HOMEPAGE
 TAGLINE  = Deblank::TAGLINE
 
-BINDIR = '/usr/local/bin'
-MANDIR = '/usr/local/man/man1'
+BINDIR = "/usr/local/bin"
+MANDIR = "/usr/local/man/man1"
 
-HELP2MAN = 'help2man'
-SED = 'sed'
+HELP2MAN = "help2man"
+SED = "sed"
 
-BINARY = 'lib/deblank.rb'
-BINARYNAME = 'deblank'  # install using this name
-MANPAGE = 'man/deblank.1'
-H2MFILE = 'deblank.h2m'
+BINARY = "lib/deblank.rb"
+BINARYNAME = "deblank"  # install using this name
+MANPAGE = "man/deblank.1"
+H2MFILE = "deblank.h2m"
 
 
 def gemspec_file
-  'deblank.gemspec'
+  "deblank.gemspec"
 end
 
 
 task :default => [:test]
 
 Rake::TestTask.new do |t|
-  t.pattern = 'test/**/test_*.rb'
+  t.pattern = "test/**/test_*.rb"
   t.verbose = true
   t.warning = true
 end
 
 
-desc 'Install binary and man page'
+desc "Install binary and man page"
 task :install => [BINARY, MANPAGE] do
   mkdir_p BINDIR
   install(BINARY, "#{BINDIR}/#{BINARYNAME}")
@@ -41,7 +41,7 @@ task :install => [BINARY, MANPAGE] do
 end
 
 
-desc 'Uninstall binary and man page'
+desc "Uninstall binary and man page"
 task :uninstall do
   rm "#{BINDIR}/#{BINARYNAME}"
   manfile = File.basename(MANPAGE)
@@ -49,7 +49,7 @@ task :uninstall do
 end
 
 
-desc 'Create man page'
+desc "Create man page"
 task :man => [MANPAGE]
 
 file MANPAGE => [BINARY, H2MFILE] do
@@ -60,7 +60,7 @@ file MANPAGE => [BINARY, H2MFILE] do
 end
 
 
-desc 'Build gem'
+desc "Build gem"
 task :build => [MANPAGE] do
   sh "gem build #{gemspec_file}"
 end

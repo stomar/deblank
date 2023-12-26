@@ -19,18 +19,18 @@
 #
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 
-require 'optparse'
+require "optparse"
 
 # This module contains the classes for the +deblank+ tool.
 module Deblank
 
-  PROGNAME  = 'deblank'
-  VERSION   = '0.1.0'
-  DATE      = '2013-10-27'
-  HOMEPAGE  = 'https://github.com/stomar/deblank'
-  TAGLINE   = 'remove special characters from filenames'
+  PROGNAME  = "deblank"
+  VERSION   = "0.1.0"
+  DATE      = "2013-10-27"
+  HOMEPAGE  = "https://github.com/stomar/deblank"
+  TAGLINE   = "remove special characters from filenames"
 
-  COPYRIGHT = <<-copyright.gsub(/^ +/, '')
+  COPYRIGHT = <<-copyright.gsub(/^ +/, "")
     Copyright (C) 2012-2018 Marcus Stollsteimer.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
     This is free software: you are free to change and redistribute it.
@@ -68,43 +68,43 @@ module Deblank
           transliterated, all other invalid characters are removed.
 
           Options:
-        }.gsub(/^ +/, '').gsub(/^____/, '    ')
+        }.gsub(/^ +/, "").gsub(/^____/, "    ")
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
-        opt.on_tail('-h', '--help', 'Print a brief help message and exit.') do
+        opt.on_tail("-h", "--help", "Print a brief help message and exit.") do
           puts opt_parser
           puts "\nReport bugs on the #{PROGNAME} home page: <#{HOMEPAGE}>"
           exit
         end
 
-        opt.on_tail('-v', '--version',
-                    'Print a brief version information and exit.') do
+        opt.on_tail("-v", "--version",
+                    "Print a brief version information and exit.") do
           puts "#{PROGNAME} #{VERSION}"
           puts COPYRIGHT
           exit
         end
 
-        opt.on('-l', '--list',
-               'List the used character substitutions.') do
+        opt.on("-l", "--list",
+               "List the used character substitutions.") do
           puts NameConverter.default_substitutions_to_s
           exit
         end
 
-        opt.on('-n', '--no-act',
-               'Do not rename files, only display what would happen.') do
+        opt.on("-n", "--no-act",
+               "Do not rename files, only display what would happen.") do
           options[:simulate] = true
         end
 
-        opt.separator ''
+        opt.separator ""
       end
       opt_parser.parse!(argv)
 
       # only file[s] should be left (at least 1 argument)
-      raise(ArgumentError, 'wrong number of arguments')  if argv.size < 1
+      raise(ArgumentError, "wrong number of arguments")  if argv.size < 1
 
       options[:files] = Array.new(argv).map do |filename|
-        correct_encoding(filename).encode('UTF-8')
+        correct_encoding(filename).encode("UTF-8")
       end
       argv.clear
 
@@ -122,7 +122,7 @@ module Deblank
     def self.correct_encoding(string)
       return string  unless string.encoding == Encoding::CP850
 
-      string.dup.force_encoding('Windows-1252')
+      string.dup.force_encoding("Windows-1252")
     end
   end
 
@@ -130,17 +130,17 @@ module Deblank
   # (only the base name is modified).
   class NameConverter
 
-    VALID_CHARS = 'A-Za-z0-9._-'  # `-' must be last
+    VALID_CHARS = "A-Za-z0-9._-"  # `-' must be last
 
     SUBSTITUTIONS = {
-      ' ' => '_',
-      'ä' => 'ae',
-      'ö' => 'oe',
-      'ü' => 'ue',
-      'Ä' => 'Ae',
-      'Ö' => 'Oe',
-      'Ü' => 'Ue',
-      'ß' => 'ss'
+      " " => "_",
+      "ä" => "ae",
+      "ö" => "oe",
+      "ü" => "ue",
+      "Ä" => "Ae",
+      "Ö" => "Oe",
+      "Ü" => "Ue",
+      "ß" => "ss"
     }
 
     def initialize
@@ -152,9 +152,9 @@ module Deblank
       dir, basename = File.dirname(filename), File.basename(filename)
 
       @substitutions.each {|from, to| basename.gsub!(/#{from}/, to) }
-      basename.gsub!(invalid_characters, '')
+      basename.gsub!(invalid_characters, "")
 
-      dir == '.' ? basename : "#{dir}/#{basename}"
+      dir == "." ? basename : "#{dir}/#{basename}"
     end
 
     def invalid?(filename)
@@ -162,7 +162,7 @@ module Deblank
     end
 
     def self.default_valid_chars_to_s
-      VALID_CHARS.scan(/.-.|./).join(' ')
+      VALID_CHARS.scan(/.-.|./).join(" ")
     end
 
     def self.default_substitutions_to_s
@@ -246,7 +246,7 @@ module Deblank
       loop do
         $stderr.print "#{question} [y/n] "
         reply = $stdin.gets.chomp.downcase  # $stdin avoids gets/ARGV problem
-        return reply == 'y'  if /\A[yn]\Z/ =~ reply
+        return reply == "y"  if /\A[yn]\Z/ =~ reply
         warn "Please answer `y' or `n'."
       end
     end
