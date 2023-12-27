@@ -263,6 +263,4 @@ end
 
 ### call main method only if called on command line
 
-if __FILE__ == $PROGRAM_NAME
-  Deblank::Application.new.run!
-end
+Deblank::Application.new.run!  if __FILE__ == $PROGRAM_NAME
