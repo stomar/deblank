@@ -158,7 +158,7 @@ module Deblank
     end
 
     def invalid?(filename)
-      invalid_characters === filename
+      filename.match?(invalid_characters)
     end
 
     def self.default_valid_chars_to_s
