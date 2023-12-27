@@ -186,7 +186,7 @@ module Deblank
     def initialize
       begin
         options = Optionparser.parse!(ARGV)
-      rescue => e
+      rescue StandardError => e
         usage_fail(e.message)
       end
       @files = options[:files]
