@@ -57,18 +57,19 @@ module Deblank
 
       opt_parser = OptionParser.new do |opt|
         opt.banner = "Usage: #{PROGNAME} [options] file[s]"
-        opt.separator "
+        opt.separator ""
+        opt.separator <<~DESCRIPTION
           deblank renames files and replaces or removes special characters
           like spaces, parentheses, or umlauts.
           The new filename will only contain the following characters:
 
-          ____#{NameConverter.default_valid_chars_to_s}
+              #{NameConverter.default_valid_chars_to_s}
 
           Spaces are replaced by underscores, German umlauts and eszett are
           transliterated, all other invalid characters are removed.
 
           Options:
-        ".gsub(/^ +/, "").gsub(/^____/, "    ")
+        DESCRIPTION
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
