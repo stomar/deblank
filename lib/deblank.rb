@@ -31,12 +31,12 @@ module Deblank
   HOMEPAGE  = "https://github.com/stomar/deblank"
   TAGLINE   = "remove special characters from filenames"
 
-  COPYRIGHT = <<-copyright.gsub(/^ +/, "")
+  COPYRIGHT = <<~TEXT
     Copyright (C) 2012-2018 Marcus Stollsteimer.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
     This is free software: you are free to change and redistribute it.
     There is NO WARRANTY, to the extent permitted by law.
-  copyright
+  TEXT
 
   # Parser for the command line options.
   # The class method parse! does the job.
