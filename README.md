@@ -51,7 +51,7 @@ Requirements
 
 - No additional Ruby gems are needed to run `deblank`.
 
-- `deblank` has been tested with Ruby 1.9.3 and Ruby 2.0.0
+- `deblank` has been tested with Ruby 3.1 or higher
   on Linux and on Windows (command prompt with code page 850).
 
 Documentation
