@@ -247,7 +247,7 @@ module Deblank
       loop do
         $stderr.print "#{question} [y/n] "
         reply = $stdin.gets.chomp.downcase  # $stdin avoids gets/ARGV problem
-        return reply == "y"  if /\A[yn]\z/ =~ reply
+        return reply == "y"  if reply.match?(/\A[yn]\z/)
 
         warn "Please answer `y' or `n'."
       end
