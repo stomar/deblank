@@ -26,8 +26,8 @@ require "optparse"
 module Deblank
 
   PROGNAME  = "deblank"
-  VERSION   = "0.1.0"
-  DATE      = "2013-10-27"
+  VERSION   = "0.2.0"
+  DATE      = "2024-01-05"
   HOMEPAGE  = "https://github.com/stomar/deblank"
   TAGLINE   = "remove special characters from filenames"
 

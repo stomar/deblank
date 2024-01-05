@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deblank (0.1.0)
+    deblank (0.2.0)
 
 GEM
   remote: https://rubygems.org/
